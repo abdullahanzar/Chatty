@@ -8,7 +8,7 @@ import Home from './components/Home'
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   useEffect(()=>{
-    if(!localStorage.getItem("token"))
+    if(localStorage.getItem("token"))
       setLoggedIn(true);
     else
       setLoggedIn(false);

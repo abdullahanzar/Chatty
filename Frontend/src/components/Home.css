@@ -1,6 +1,7 @@
 .home {
     height: 92%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -69,4 +70,8 @@
 .selected-avatar {
     border-radius: 100%;
     border: 3px solid #EC5454;
+}
+
+.request {
+    color: #EC5454;
 }
