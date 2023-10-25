@@ -126,6 +126,10 @@ app.post("/login", async (req, res) => {
     }
 })
 
+app.post("/verify-token", isAuthenticated, async (req, res)=>{
+    res.json({verification: true});
+})
+
 app.listen(process.env.SERVER_PORT, async ()=>{
     try {
         mongoose.connect(process.env.MONGODB);
