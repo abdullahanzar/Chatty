@@ -5,6 +5,7 @@ const jsonwebtoken = require("jsonwebtoken");
 const dotenv = require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const axios = require("axios");
 
 const app = express();
 
@@ -21,6 +22,31 @@ const chatbotUser = mongoose.model("chatbot-user", {
         default: []
     }
 })
+
+async function chatGPT(prompt, maxTokens) {
+    const message = [
+        {
+            role: 'user',
+            content: prompt
+        }
+    ]
+    try {
+        const response = await axios.post("https://api.openai.com/v1/chat/completions", {
+            model: "gpt-3.5-turbo",
+            messages: message,
+            max_tokens: maxTokens,
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${process.env.CHATGPT_API_KEY}`
+            }
+        });
+        return response.data.choices[0].message.content;
+    }
+    catch(e) {
+        console.log(e);
+    }
+}
 
 async function authenticate(username, password) {
     const user = await chatbotUser.findOne({username});
@@ -41,6 +67,20 @@ app.get("/", (req, res) => {
     res.json({server: "Running",
             health: mongoose.connection.readyState==1 ? "Looks Good" : "Unable to Connect to the Database"});
 });
+
+app.post("/chat", async (req, res) => {
+    const {prompt} = req.body;
+    if(!prompt) {
+        res.json({error: "no prompt sent"});
+    }
+    try {
+        const response = await chatGPT(prompt, 50);
+        res.json({output: response});
+    }   
+    catch(e) {
+        res.json({error: e})
+    }
+})
 
 app.post("/register", async (req, res)=>{
     const {username, password, avatar} = req.body;
@@ -89,7 +129,7 @@ app.post("/login", async (req, res) => {
 app.listen(process.env.SERVER_PORT, async ()=>{
     try {
         mongoose.connect(process.env.MONGODB);
-        console.log("Connected Successfully")
+        console.log("Connected Successfully");
     }
     catch(e) {
         console.log(e);
