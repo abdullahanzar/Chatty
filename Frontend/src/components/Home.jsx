@@ -16,6 +16,9 @@ export default function Home() {
   const [requestComplete, setRequestComplete] = useState(false);
   const handleRegister = async (e) => {
     e.preventDefault();
+    if(!formData.username || !formData.password) {
+        return setRequestComplete("Details not filled.")
+    }
     try {
       const response = await axios.post(
         "https://chatty-server-2xu5.onrender.com/register/",
@@ -35,6 +38,9 @@ export default function Home() {
   };
   const handleLogIn = async (e) => {
     e.preventDefault();
+    if(!formData.username || !formData.password) {
+        return setRequestComplete("Details not filled.")
+    }
     try {
       const response = await axios.post(
         "https://chatty-server-2xu5.onrender.com/login/",
