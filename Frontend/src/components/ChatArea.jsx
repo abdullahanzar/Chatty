@@ -18,8 +18,8 @@ export default function ChatArea() {
   }, [response])
   return (
     <div className='chatArea'>
-        <Chat prompt={prompt} response={response}></Chat>
-        <InputArea prompt={prompt} setPrompt={setPrompt} setResponse={setResponse}></InputArea>
+        <Chat prompt={prompt} response={response} generate={generate} setPrompt={setPrompt}></Chat>
+        <InputArea prompt={prompt} setPrompt={setPrompt} setResponse={setResponse} setGenerate={setGenerate}></InputArea>
     </div>
   )
 }

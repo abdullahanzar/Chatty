@@ -136,7 +136,7 @@ function Register(
         <button type="submit">Submit</button>
       </form>
       {requestComplete != false && <p className="request">{requestComplete}</p>}
-      {loader && <div className="loader"></div>}
+      {loader && requestComplete!="Details not filled." && <div className="loader"></div>}
       <p>
         Already have an account?{" "}
         <span
@@ -185,7 +185,7 @@ function LogIn(
         <button type="submit">Log In</button>
       </form>
       {requestComplete != false && <p className="request">{requestComplete}</p>}
-      {loader && <div className="loader"></div>}
+      {loader && requestComplete!="Details not filled." && <div className="loader"></div>}
       <p>
         Don't have an account?{" "}
         <span

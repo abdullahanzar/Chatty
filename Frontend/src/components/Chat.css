@@ -1,36 +1,112 @@
 .chat {
-    width: 100%;
-    height: 80%;
-    overflow-y: scroll;
+  width: 100%;
+  height: 80%;
+  overflow-y: scroll;
 }
 
-
 .user {
-    width: 100%;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    background-color: #54A3EC20;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background-color: #54a3ec20;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .conversation img {
-    width: 3rem;
-    height: 3rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .conversation p {
-    margin: 1rem;
-    font-size: 1.2rem;
+  margin: 1rem;
+  font-size: 1.2rem;
 }
 
 .gpt {
-    padding: 1.5rem;
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #EC545420;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ec545420;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.generating {
+  padding: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ec54d520;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.generating p {
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+
+.loader-generator {
+  position: relative;
+  left: 3%;
+  width: 50px;
+  height: 8px;
+}
+.loader-generator:before,
+.loader-generator:after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 32px 0 #fff;
+  left: 0;
+  top: 0;
+  animation: ballMoveX 2s linear infinite;
+}
+.loader-generator:after {
+  box-shadow: none;
+  transform: translateX(64px) scale(1);
+  z-index: 2;
+  animation: none;
+  animation: trfloader-generator 2s linear infinite;
+}
+
+@keyframes trfloader-generator {
+  0%,
+  5% {
+    transform: translateX(64px) scale(1);
+    background: #fff;
+  }
+  10% {
+    transform: translateX(64px) scale(1);
+    background: #ff3d00;
+  }
+  40% {
+    transform: translateX(32px) scale(1.5);
+    background: #ff3d00;
+  }
+  90%,
+  95% {
+    transform: translateX(0px) scale(1);
+    background: #ff3d00;
+  }
+  100% {
+    transform: translateX(0px) scale(1);
+    background: #fff;
+  }
+}
+@keyframes ballMoveX {
+  0%,
+  10% {
+    transform: translateX(0);
+  }
+  90%,
+  100% {
+    transform: translateX(32px);
+  }
 }

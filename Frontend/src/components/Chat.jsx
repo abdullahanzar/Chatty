@@ -22,9 +22,9 @@ export default function Chat(props) {
   }, [props.response])
   useEffect(()=>{
     scrollToBottom();
-  }, [chat])
+  }, [chat, props.generate])
   useEffect(()=>{
-    console.log(chat)
+    props.setPrompt("");
   }, [chat])
   const scrollToBottom = () => {
     console.log(scrollable.current)
@@ -50,6 +50,11 @@ export default function Chat(props) {
         </div>
         </div>
       ))  
+    }
+    {
+      props.generate && <div className="generating">
+        <p>Generating</p> <span className="loader-generator"></span>
+      </div>
     }
   </div>
 }
