@@ -47,6 +47,15 @@
   margin-right: 1rem;
 }
 
+@media only screen and (max-device-width: 768px) {
+  .navbar p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin-right: 2%;
+    max-width: 12rem;
+  }
+}
+
 .navbar-user p {
   margin-right: 1rem;
 }
@@ -75,10 +84,9 @@
 .popup button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background: #E10C0C;
+  background: #e10c0c;
   border: none;
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
 }
-
