@@ -111,11 +111,14 @@ app.post("/register", async (req, res)=>{
 app.post("/login", async (req, res) => {
     const {username, password} = req.body;
     try {
+    const user = await chatbotUser.findOne({username})
     !username || !password ? res.json({error: "empty body"}) 
     : await authenticate(username, password) ? res.json({
         login: true,
         token: await jsonwebtoken.sign({username, password}, process.env.JWT_SECRET_KEY, {expiresIn: 1800},),
-        authenticated: true
+        authenticated: true,
+        avatar: user.avatar,
+        username: username
     }) : res.json({
         login: false,
         authenticated: false
