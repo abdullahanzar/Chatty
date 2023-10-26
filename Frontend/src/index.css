@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300&display=swap');
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -17,4 +15,21 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #70a5e63a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cf6e6e;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b72323;
 }
