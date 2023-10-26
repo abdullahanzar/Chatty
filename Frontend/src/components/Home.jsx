@@ -14,11 +14,13 @@ export default function Home() {
   const [avatar, setAvatar] = useState("beaver");
   const [showRegister, setShowRegister] = useState(true);
   const [requestComplete, setRequestComplete] = useState(false);
+  const [loader, setLoader] = useState(false);
   const handleRegister = async (e) => {
     e.preventDefault();
     if(!formData.username || !formData.password) {
         return setRequestComplete("Details not filled.")
     }
+    setLoader(true);
     try {
       const response = await axios.post(
         "https://chatty-server-2xu5.onrender.com/register/",
@@ -29,6 +31,7 @@ export default function Home() {
           },
         }
       );
+      setLoader(false);
       if (response.data.success) setRequestComplete("Registered Successfully");
       else if (response.data.error)
         setRequestComplete(`Error. ${response.data.error}`);
@@ -38,6 +41,7 @@ export default function Home() {
   };
   const handleLogIn = async (e) => {
     e.preventDefault();
+    setLoader(true);
     if(!formData.username || !formData.password) {
         return setRequestComplete("Details not filled.")
     }
@@ -51,10 +55,12 @@ export default function Home() {
           },
         }
       );
-      console.log(response);
+      setLoader(false);
       if (response.data.login) {
         setRequestComplete("Authentication Successful");
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("avatar", response.data.avatar);
         setLoggedIn(true);
       }
       else
@@ -79,14 +85,16 @@ export default function Home() {
             formData,
             setFormData,
             handleRegister,
-            requestComplete
+            requestComplete,
+            loader
           )
         : LogIn(
             setShowRegister,
             formData,
             setFormData,
             requestComplete,
-            handleLogIn
+            handleLogIn,
+            loader
           )}
     </div>
   );
@@ -99,7 +107,8 @@ function Register(
   formData,
   setFormData,
   handleRegister,
-  requestComplete
+  requestComplete,
+  loader
 ) {
   return (
     <div className="register">
@@ -127,6 +136,7 @@ function Register(
         <button type="submit">Submit</button>
       </form>
       {requestComplete != false && <p className="request">{requestComplete}</p>}
+      {loader && <div className="loader"></div>}
       <p>
         Already have an account?{" "}
         <span
@@ -145,7 +155,8 @@ function LogIn(
   formData,
   setFormData,
   requestComplete,
-  handleLogIn
+  handleLogIn,
+  loader
 ) {
   return (
     <div className="register">
@@ -174,6 +185,7 @@ function LogIn(
         <button type="submit">Log In</button>
       </form>
       {requestComplete != false && <p className="request">{requestComplete}</p>}
+      {loader && <div className="loader"></div>}
       <p>
         Don't have an account?{" "}
         <span

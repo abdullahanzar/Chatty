@@ -1,4 +1,36 @@
 .chat {
     width: 100%;
     height: 80%;
+    overflow-y: scroll;
+}
+
+
+.user {
+    width: 100%;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    background-color: #54A3EC20;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.conversation img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.conversation p {
+    margin: 1rem;
+    font-size: 1.2rem;
+}
+
+.gpt {
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #EC545420;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
