@@ -20,7 +20,7 @@ Before you begin, ensure you have met the following requirements:
 ## Demo
 
 - You can see a live demo of Chatty app at https://chatty-teal-seven.vercel.app/
-- You can also access a live demo video at
+- You can also access a live demo video [here](https://1drv.ms/v/s!Anc0BhHoNso16HIkt5lBmxZe4N1w?e=HuAIKQ).
 
 ## Installation
 
