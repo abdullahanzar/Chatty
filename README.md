@@ -54,6 +54,8 @@ Before you begin, ensure you have met the following requirements:
    | CHATGPT_API_KEY | The ChatGPT API key obtained from Open AI must be placed here. |
    | JWT_SECRET_KEY | This is used to generate a JWT Token for authentication. This can be anything but it is adviced to keep it short. For eg: JWT@123 |
 
+3. Host the backend at render, etc. Please change the API URL calls in the frontend to your backend URL.
+
 4. Go back to the frontend and run the following command:
 
    ```bash
