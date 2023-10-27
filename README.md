@@ -27,8 +27,8 @@ Before you begin, ensure you have met the following requirements:
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/abdullah-anzar/chatty.git
-   cd chatty
+   git clone https://github.com/abdullahanzar/Chatty.git
+   cd Chatty
 
    ```
 
