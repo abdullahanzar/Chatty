@@ -26,7 +26,7 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone this repository:
 
-   ```bash
+   ```bas
    git clone https://github.com/abdullahanzar/Chatty.git
    cd Chatty
 
@@ -34,12 +34,10 @@ Before you begin, ensure you have met the following requirements:
 
 2. Install the dependencies for both the frontend and backend:
 
-   ````bash
+   ````bas
    cd Backend
    npm install
 
-   # Install backend dependencies
-   ```bash
    cd ..
    cd Frontend
    npm install
