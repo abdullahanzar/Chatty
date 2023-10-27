@@ -19,8 +19,8 @@ Before you begin, ensure you have met the following requirements:
 
 ## Demo
 
-You can see a live demo of Chatty app at https://chatty-teal-seven.vercel.app/
-You can also access a live demo video at
+- You can see a live demo of Chatty app at https://chatty-teal-seven.vercel.app/
+- You can also access a live demo video at
 
 ## Installation
 
@@ -33,8 +33,6 @@ You can also access a live demo video at
    ```
 
 2. Install the dependencies for both the frontend and backend:
-
-   # Install frontend dependencies
 
    ````bash
    cd Backend
