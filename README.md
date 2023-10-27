@@ -7,6 +7,7 @@ Chatty is a web application that allows users to have interactive conversations 
 - Real-time chat interface.
 - Seamless integration with the ChatGPT API.
 - User-friendly design.
+- Responsive Design with support for Mobile and Tab based Browsers.
 - Chat History.
 - Expandable for additional features.
 
