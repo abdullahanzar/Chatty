@@ -22,6 +22,7 @@ export default function InputArea(props) {
         onKeyUp={(e) => {
           if (e.key == "Enter") handleInput();
         }}
+        disabled={disable}
       />
       <button
         className="go-button"

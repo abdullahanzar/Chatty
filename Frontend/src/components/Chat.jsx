@@ -9,7 +9,7 @@ import turtle from "../assets/turtle.png";
 
 export default function Chat(props) {
   const [chat, setChat] = useState(()=>{
-    const retrieved = localStorage.getItem("previousChatData");
+    const retrieved = localStorage.getItem(`${localStorage.getItem("username")}ChatData`);
     return retrieved ? JSON.parse(retrieved) : []
 });
   const avatar = getAvatar();
@@ -29,7 +29,7 @@ export default function Chat(props) {
   useEffect(()=>{
     props.setPrompt("");
     const serializedChat = JSON.stringify(chat);
-    localStorage.setItem("previousChatData", serializedChat);
+    localStorage.setItem(`${localStorage.getItem("username")}ChatData`, serializedChat);
   }, [chat])
   const scrollToBottom = () => {
     if (scrollable.current) 
