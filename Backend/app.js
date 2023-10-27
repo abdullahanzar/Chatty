@@ -68,13 +68,13 @@ app.get("/", (req, res) => {
             health: mongoose.connection.readyState==1 ? "Looks Good" : "Unable to Connect to the Database"});
 });
 
-app.post("/chat", async (req, res) => {
+app.post("/chat", isAuthenticated, async (req, res) => {
     const {prompt} = req.body;
     if(!prompt) {
         res.json({error: "no prompt sent"});
     }
     try {
-        const response = await chatGPT(prompt, 50);
+        const response = await chatGPT(prompt, 250);
         res.json({output: response});
     }   
     catch(e) {
