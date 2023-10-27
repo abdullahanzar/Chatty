@@ -8,7 +8,10 @@ import parrotAvatar from "../assets/parrotAvatar.png";
 import turtle from "../assets/turtle.png";
 
 export default function Chat(props) {
-  const [chat, setChat] = useState([]);
+  const [chat, setChat] = useState(()=>{
+    const retrieved = localStorage.getItem("previousChatData");
+    return retrieved ? JSON.parse(retrieved) : []
+});
   const avatar = getAvatar();
   const scrollable = useRef(null);
   useEffect(()=>{
@@ -25,9 +28,10 @@ export default function Chat(props) {
   }, [chat, props.generate])
   useEffect(()=>{
     props.setPrompt("");
+    const serializedChat = JSON.stringify(chat);
+    localStorage.setItem("previousChatData", serializedChat);
   }, [chat])
   const scrollToBottom = () => {
-    console.log(scrollable.current)
     if (scrollable.current) 
       scrollable.current.scrollTo(
         {
@@ -38,8 +42,8 @@ export default function Chat(props) {
   }
   return <div className="chat" ref={scrollable}>
     {
-      chat.map((convo)=>(
-        <div className="conversation">
+      chat.map((convo, key)=>(
+        <div className="conversation" key={key}>
         <div className="user">
           <img src={avatar} alt="" />
           <p>{convo.user}</p>

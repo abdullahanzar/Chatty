@@ -72,9 +72,6 @@ export default function Home() {
   useEffect(() => {
     setFormData({ ...formData, avatar: avatar });
   }, [avatar]);
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
   return (
     <div className="home">
       {showRegister
